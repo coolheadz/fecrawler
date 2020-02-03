@@ -65,6 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+    'feCrawler.pipelines.TypecodePipeline': 200,
     'feCrawler.pipelines.FecrawlerPipeline': 300
 }
 

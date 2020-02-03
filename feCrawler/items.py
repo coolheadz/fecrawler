@@ -12,8 +12,16 @@ class FecrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     code = scrapy.Field()
+    name = scrapy.Field()
+    ytd = scrapy.Field()
     one_yr = scrapy.Field()
     three_yr = scrapy.Field()
     five_yr = scrapy.Field()
-    ten_yr = scrapy.Field()
-    pass
+
+
+class TypecodecrawlerItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    isin = scrapy.Field()
+    typecode = scrapy.Field()
+   

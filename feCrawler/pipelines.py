@@ -13,12 +13,29 @@ class FecrawlerPipeline(object):
         super().__init__()
 
     def open_spider(self, spider):
-        self.file = open('result.csv', 'w')
-        self.file.write('code, 1yr, 3yr, 5yr, 10yr\n')
+        self.file = open('result.csv', 'w', encoding='UTF-8-sig')
+        self.file.write('code, name, ytd, 1yr, 3yr, 5yr\n')
 
     def close_spider(self, spider):
         self.file.close()
 
     def process_item(self, item, spider):
-        self.file.write('{},{},{},{},{}\n'.format(item['code'], item['one_yr'], item['three_yr'], item['five_yr'], item['ten_yr']))
+        self.file.write('{},{},{},{},{},{}\n'.format(item['code'], item['name'], item['ytd'], item['one_yr'], item['three_yr'], item['five_yr']))
+        return item
+
+
+class TypecodePipeline(object):
+    file = None
+
+    def __init__(self):
+        super().__init__()
+
+    def open_spider(self, spider):
+        self.file = open('ISIN_TypeCode.txt', 'w', encoding='UTF-8')
+
+    def close_spider(self, spider):
+        self.file.close()
+
+    def process_item(self, item, spider):
+        self.file.write('{},{}\n'.format(item['isin'], item['typecode']))
         return item
